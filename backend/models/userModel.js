@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  userName: {
+  name: {
     type: String,
   },
   workoutHistory: [
@@ -32,10 +32,12 @@ UserSchema.methods.matchPassword = async function (enteredPassword) {
 };
 
 UserSchema.pre('save', async function (next) {
+  // If it isnt a passwod that has been changed
   if (!this.isModified('password')) {
     next();
   }
 
+  // Hash the password before adding to db
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });

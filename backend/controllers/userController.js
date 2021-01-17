@@ -31,6 +31,7 @@ const authUser = asyncHandler(async (req, res) => {
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
+  console.log(name);
 
   const userExists = await User.findOne({ email });
 
@@ -178,4 +179,4 @@ const updateUser = asyncHandler(async (req, res) => {
 //   getUserById,
 //   updateUser,
 // };
-module.exports = { authUser, getUserProfile };
+module.exports = { authUser, getUserProfile, registerUser };

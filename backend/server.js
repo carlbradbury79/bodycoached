@@ -8,6 +8,9 @@ connectDB();
 
 const app = express();
 
+// Allow json in request body.  Needed for auth (email and password)
+app.use(express.json());
+
 // Routes
 app.use('/api/users', userRoutes);
 
