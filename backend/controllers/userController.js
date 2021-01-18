@@ -8,6 +8,7 @@ require('dotenv').config();
 // @route   POST /api/users/login
 // @access  Public
 const authUser = asyncHandler(async (req, res) => {
+  console.log('authUser');
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
