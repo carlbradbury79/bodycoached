@@ -37,6 +37,7 @@ export const userRegisterReducer = (state = {}, action) => {
       return { loading: false, userInfo: action.payload };
     case USER_REGISTER_FAIL:
       console.log('userReducer REGISTER fail');
+      console.log('?', action.payload);
       return { loading: false, error: action.payload };
     default:
       return state;
